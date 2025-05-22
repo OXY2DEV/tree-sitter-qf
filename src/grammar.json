@@ -156,7 +156,11 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": " "
+    },
+    {
+      "type": "PATTERN",
+      "value": "\\t"
     }
   ],
   "conflicts": [],

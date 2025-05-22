@@ -10,6 +10,8 @@
 module.exports = grammar({
   name: "qf",
 
+  extras: $ => [ / /, /\t/ ],
+
   rules: {
     quickfix_list: $ => repeat($.quickfix_item),
 
