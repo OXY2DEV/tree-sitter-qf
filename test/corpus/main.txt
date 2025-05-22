@@ -14,9 +14,9 @@ tests/example.lua | 10 col 5 | This function expects 2 arguments, but is receive
       (content))))
 
 ==============================================================================
-Padded quickfix item
+Quickfix item with escaped pipe
 ==============================================================================
-example.lua       | 2 col 5  | This function is unused.
+example_\|_file.lua | 2 col 5  | This function is unused.
 ------------------------------------------------------------------------------
 
 (quickfix_list
