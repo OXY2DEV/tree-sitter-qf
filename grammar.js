@@ -19,7 +19,9 @@ module.exports = grammar({
       $.range,
       "|",
       $.code_block,
-      choice(/\n/, /\r/)
+      optional(
+        choice(/\n/, /\r/)
+      )
     ),
 
     filename: $ => /[^\|]+/,

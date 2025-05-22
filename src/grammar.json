@@ -36,12 +36,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "\\n"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "\\n"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "\\r"
+                }
+              ]
             },
             {
-              "type": "PATTERN",
-              "value": "\\r"
+              "type": "BLANK"
             }
           ]
         }
