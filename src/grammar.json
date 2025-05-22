@@ -1,0 +1,160 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "qf",
+  "rules": {
+    "quickfix_list": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "quickfix_item"
+      }
+    },
+    "quickfix_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "filename"
+        },
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "range"
+        },
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "code_block"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\n"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\r"
+            }
+          ]
+        }
+      ]
+    },
+    "filename": {
+      "type": "PATTERN",
+      "value": "[^\\|]+"
+    },
+    "range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\d-]+"
+          },
+          "named": true,
+          "value": "row"
+        },
+        {
+          "type": "STRING",
+          "value": " col "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\d-]+"
+          },
+          "named": true,
+          "value": "col"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "item_type"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "item_type": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "code_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "filetype"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\n\\r]*"
+          },
+          "named": true,
+          "value": "content"
+        }
+      ]
+    },
+    "filetype": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 20,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ">!"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[a-z_0-9]+"
+            },
+            {
+              "type": "STRING",
+              "value": "!<"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}

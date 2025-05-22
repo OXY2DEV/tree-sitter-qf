@@ -1,0 +1,115 @@
+[
+  {
+    "type": "code_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "filetype",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quickfix_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quickfix_list",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "quickfix_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "col",
+          "named": true
+        },
+        {
+          "type": "item_type",
+          "named": true
+        },
+        {
+          "type": "row",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": " col ",
+    "named": false
+  },
+  {
+    "type": "col",
+    "named": true
+  },
+  {
+    "type": "content",
+    "named": true
+  },
+  {
+    "type": "filename",
+    "named": true
+  },
+  {
+    "type": "filetype",
+    "named": true
+  },
+  {
+    "type": "item_type",
+    "named": true
+  },
+  {
+    "type": "row",
+    "named": true
+  },
+  {
+    "type": "|",
+    "named": false
+  }
+]

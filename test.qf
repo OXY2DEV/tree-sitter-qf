@@ -1,0 +1,2 @@
+test.lua |1 col 1-30 error| >!lua!< This function requires 2 argument(s) but instead it is receiving 0.
+test.lua |1 col 1-30 error| This function requires 2 argument(s) but instead it is receiving 0.
