@@ -13,7 +13,13 @@
 
 
 (filename) @string.special.path
-(text) @string
+
+((code_block) @markup.raw.block
+  (#set! priority 90))
+
+(code_block
+  (language_delimiter) @markup.raw.block
+  (#set! conceal ""))
 
 
 ((item_type) @comment.error
