@@ -12,7 +12,7 @@
           "named": true
         },
         {
-          "type": "filetype",
+          "type": "language_delimiter",
           "named": true
         }
       ]
@@ -97,11 +97,11 @@
     "named": true
   },
   {
-    "type": "filetype",
+    "type": "item_type",
     "named": true
   },
   {
-    "type": "item_type",
+    "type": "language_delimiter",
     "named": true
   },
   {

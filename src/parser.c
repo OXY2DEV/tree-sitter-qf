@@ -28,7 +28,7 @@ enum ts_symbol_identifiers {
   anon_sym_col = 6,
   sym_item_type = 7,
   aux_sym_code_block_token1 = 8,
-  sym_filetype = 9,
+  sym_language_delimiter = 9,
   sym_quickfix_list = 10,
   sym_quickfix_item = 11,
   sym_range = 12,
@@ -47,7 +47,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_col] = " col ",
   [sym_item_type] = "item_type",
   [aux_sym_code_block_token1] = "content",
-  [sym_filetype] = "filetype",
+  [sym_language_delimiter] = "language_delimiter",
   [sym_quickfix_list] = "quickfix_list",
   [sym_quickfix_item] = "quickfix_item",
   [sym_range] = "range",
@@ -66,7 +66,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_col] = anon_sym_col,
   [sym_item_type] = sym_item_type,
   [aux_sym_code_block_token1] = aux_sym_code_block_token1,
-  [sym_filetype] = sym_filetype,
+  [sym_language_delimiter] = sym_language_delimiter,
   [sym_quickfix_list] = sym_quickfix_list,
   [sym_quickfix_item] = sym_quickfix_item,
   [sym_range] = sym_range,
@@ -112,7 +112,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_filetype] = {
+  [sym_language_delimiter] = {
     .visible = true,
     .named = true,
   },
@@ -354,7 +354,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\r') ADVANCE(28);
       END_STATE();
     case 29:
-      ACCEPT_TOKEN(sym_filetype);
+      ACCEPT_TOKEN(sym_language_delimiter);
       END_STATE();
     default:
       return false;
@@ -388,7 +388,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_PIPE] = ACTIONS(1),
     [aux_sym_range_token1] = ACTIONS(1),
     [anon_sym_col] = ACTIONS(1),
-    [sym_filetype] = ACTIONS(1),
+    [sym_language_delimiter] = ACTIONS(1),
   },
   [STATE(1)] = {
     [sym_quickfix_list] = STATE(12),
@@ -420,7 +420,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(14), 1,
       aux_sym_code_block_token1,
     ACTIONS(16), 1,
-      sym_filetype,
+      sym_language_delimiter,
     STATE(8), 1,
       sym_code_block,
   [32] = 2,

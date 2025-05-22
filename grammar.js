@@ -33,11 +33,11 @@ module.exports = grammar({
     item_type: $ => /\w+/,
 
     code_block: $ => seq(
-        optional($.filetype),
+        optional($.language_delimiter),
         alias(/[^\n\r]*/, $.content),
     ),
 
-    filetype: _ => token(prec(20, seq(
+    language_delimiter: $ => token(prec(20, seq(
       ">!",
       /[a-z_0-9]+/,
       "!<"
