@@ -26,7 +26,12 @@ module.exports = grammar({
       )
     ),
 
-    filename: $ => /[^\|]+/,
+    filename: $ => repeat1(
+      choice(
+        token("\\|"),
+        token(prec(-1, /[^\|]/))
+      )
+    ),
     range: $ => seq(
       alias(/[\d-]+/, $.row),
       " col ",
@@ -41,7 +46,7 @@ module.exports = grammar({
         alias(/[^\n\r]*/, $.content),
     ),
 
-    language_delimiter: $ => token(prec(20, seq(
+    language_delimiter: $ => token(prec(2, seq(
       ">!",
       /[a-z_0-9]+/,
       "!<"

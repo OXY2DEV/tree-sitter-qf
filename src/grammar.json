@@ -56,8 +56,30 @@
       ]
     },
     "filename": {
-      "type": "PATTERN",
-      "value": "[^\\|]+"
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "\\|"
+            }
+          },
+          {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": -1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[^\\|]"
+              }
+            }
+          }
+        ]
+      }
     },
     "range": {
       "type": "SEQ",
@@ -132,7 +154,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 20,
+        "value": 2,
         "content": {
           "type": "SEQ",
           "members": [
