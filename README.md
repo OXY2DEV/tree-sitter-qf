@@ -31,12 +31,12 @@ parser_configs.qf = {
 Now, quit & open Neovim and run this command,
 
 ```vim
-:TSInstall lua_patterns
+:TSInstall qf
 ```
 
 ### 💡 manual
 
-Copy the `lua_patterns.so` file to `~/.config/nvim/parser/`.
+Copy the `qf.so` file to `~/.config/nvim/parser/`.
 
 ## 💥 Query files(syntax highlighting & injections)
 
