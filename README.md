@@ -36,7 +36,13 @@ Now, quit & open Neovim and run this command,
 
 ### 💡 manual
 
-Copy the `qf.so` file to `~/.config/nvim/parser/`.
+1. Install the `tree-sitter` CLI tool.
+
+2. Clone the repository in your machine and `cd` into it.
+
+3. Run `tree-sitter build`(if it tells you to install dependencies then you should install them and retry).
+
+4. Copy the `qf.so` file to `~/.config/nvim/parser/`.
 
 ## 💥 Query files(syntax highlighting & injections)
 
