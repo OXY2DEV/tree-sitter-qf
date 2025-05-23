@@ -46,6 +46,11 @@ Now, quit & open Neovim and run this command,
 
 ## 💥 Query files(syntax highlighting & injections)
 
+>[!NOTE]
+> You won't get syntax highlighting for injections out-of-the box.
+>
+> See [this](#-default-quickfix-menu-support) if you want that!
+
 Copy everything inside `queries/` to `~/.config/nvim/queries/qf/` in your machine.
 
 You also need to put this somewhere in your config(preferably in your `init.lua`),
@@ -78,4 +83,62 @@ vim.treesitter.query.add_directive("set-qf-lang!", function (match, _, bufnr, pr
     metadata["injection.language"] = ft or exceptions[delimiter] or "";
 end, { force = true, all = false });
 ```
+
+Now, any quickfix with this format will get syntax highlighting.
+
+```txt
+ filename.txt | 10 col 5 | >!language_name!< Some text
+```
+
+You can use `quickfixtextfunc` to add the language section(with the language name) to the list items.
+
+You can see an example one [here](https://github.com/OXY2DEV/nvim/blob/fc1788c3edc588b092769c40537f3ffe81506327/lua/scripts/quickfix.lua#L94-L297).
+
+### ✅ Default quickfix menu support
+
+>[!NOTE]
+> Text message(e.g. from `vim.diagnostics.setqflist()`) will be highlighted with the file's filetype.
+>
+> This is inaccurate but there is currently no way to detect if something is a text message.
+
+First, add this somewhere in your config(preferably in your `init.lua`).
+
+```lua
+vim.treesitter.query.add_directive("qf-fallback-lang!", function (match, _, bufnr, pred, metadata)
+    local capture_id = pred[2];
+    ---@type TSNode
+    local node = match[capture_id];
+
+    if not node then
+        -- Couldn't find node 
+        return;
+    end
+
+    local parent = node:parent();
+
+    if not parent then
+        -- Couldn't find the list item node.
+        return;
+    end
+
+    local filename = parent:child(0);
+
+    if not filename or filename:type() ~= "filename" then
+        -- Filename node doesn't exist or has wrong type.
+        return;
+    end
+
+    local text = vim.treesitter.get_node_text(filename, bufnr);
+    local ft = vim.filetype.match({ filename = text })
+
+    if ft then
+        -- Only add it if the filetype is found.
+        metadata["injection.language"] = ft;
+    end
+end, { force = true });
+```
+
+Now, copy everything in `queries/` to `~/.config/nvim/queries/qf/`.
+
+Lastly, uncomment the last section of the [injections.scm](https://github.com/OXY2DEV/tree-sitter-qf/blob/main/queries/injections.scm).
 
