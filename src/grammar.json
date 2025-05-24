@@ -94,17 +94,30 @@
           "value": "row"
         },
         {
-          "type": "STRING",
-          "value": " col "
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[\\d-]+"
-          },
-          "named": true,
-          "value": "col"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": " col "
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[\\d-]+"
+                  },
+                  "named": true,
+                  "value": "col"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",

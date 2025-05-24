@@ -75,3 +75,17 @@ example.lua       | 5 col 5 | >!lua!< local R = 5;
       (language_delimiter)
       (content))))
 
+==============================================================================
+Quickfix item without col
+==============================================================================
+example.lua       |5| >!lua!< local R = 5;
+------------------------------------------------------------------------------
+
+(quickfix_list
+  (quickfix_item
+    (filename)
+    (range
+      (row))
+    (code_block
+      (language_delimiter)
+      (content))))
