@@ -1,0 +1,4 @@
+filename.text | 10 col 5 | Some messages.
+lua_file.lua | 12-5 col 2-3 | >!lua!< local some_var = 10;
+main.c | 5 col 5-6 warning | some_func(;
+diagnostic.lua | 10 | diagnostic.text = "hi"
