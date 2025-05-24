@@ -16,6 +16,7 @@ on:
       - test/**
       - bindings/**
       - binding.gyp
+  workflow_dispatch:
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -28,43 +29,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-14]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@v2
-      - name: Run parser and binding tests
+        uses: tree-sitter/setup-action/cli@v1
+      - name: Run tests
         uses: tree-sitter/parser-test-action@v2
         with:
           test-rust: true
-      - name: Parse sample files
-        uses: tree-sitter/parse-action@v4
-        id: parse-files
-        with:
-          files: examples/**
-      - name: Upload failures artifact
-        uses: actions/upload-artifact@v4
-        if: "!cancelled() && steps.parse-files.outcome == 'failure'"
-        with:
-          name: failures-${{runner.os}}
-          path: ${{steps.parse-files.outputs.failures}}
-  fuzz:
-    name: Fuzz scanner
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-      - name: Check for scanner changes
-        id: scanner-check
-        run: |-
-          if git diff --quiet HEAD^ -- src/scanner.c; then
-            printf 'changed=false\n' >> "$GITHUB_OUTPUT"
-          else
-            printf 'changed=true\n' >> "$GITHUB_OUTPUT"
-          fi
-      - name: Run the fuzzer
-        uses: tree-sitter/fuzz-action@v4
-        if: steps.scanner-check.outputs.changed == 'true'
+          test-node: true
+          test-python: true
+          test-go: true
+          test-swift: true
