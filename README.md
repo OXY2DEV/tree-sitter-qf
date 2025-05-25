@@ -1,12 +1,12 @@
 # tree-sitter-qf
 
-[![CI][ci]](https://github.com/tree-sitter/tree-sitter-qf/actions/workflows/ci.yml)
+[![Create release][release]](https://github.com/OXY2DEV/tree-sitter-qf/actions/workflows/release.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 
 Vim's quickfix list grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
-[ci]: https://img.shields.io/github/actions/workflow/status/OXY2DEV/tree-sitter-qf/ci.yml?logo=github&label=CI
+[release]: https://github.com/OXY2DEV/tree-sitter-qf/actions/workflows/release.yml/badge.svg
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
 [matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
 
