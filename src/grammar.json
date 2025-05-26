@@ -101,7 +101,7 @@
               "members": [
                 {
                   "type": "STRING",
-                  "value": " col "
+                  "value": "col"
                 },
                 {
                   "type": "ALIAS",

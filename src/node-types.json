@@ -86,16 +86,16 @@
     }
   },
   {
-    "type": " col ",
-    "named": false
-  },
-  {
     "type": "\\|",
     "named": false
   },
   {
     "type": "col",
     "named": true
+  },
+  {
+    "type": "col",
+    "named": false
   },
   {
     "type": "content",

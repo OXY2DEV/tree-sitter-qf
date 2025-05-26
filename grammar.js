@@ -34,7 +34,7 @@ module.exports = grammar({
     ),
     range: $ => seq(
       alias(/[\d-]+/, $.row),
-      optional(seq(" col ",
+      optional(seq("col",
         alias(/[\d-]+/, $.col))),
       optional($.item_type)
     ),
