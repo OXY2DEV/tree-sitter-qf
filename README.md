@@ -4,7 +4,7 @@
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 
-![Screenshot 2025-05-26 at 12 39 51 AM](https://github.com/user-attachments/assets/1c872df9-0ceb-465f-87bb-bd9ebc148233)
+![Syntax highlighting](https://github.com/user-attachments/assets/1c872df9-0ceb-465f-87bb-bd9ebc148233)
 
 [Tree-sitter](https://github.com/tree-sitter/tree-sitter) grammar for Vim's quickfix list.
 
@@ -52,10 +52,31 @@ Copy everything inside `queries/` to `~/.config/nvim/queries/qf/` in your machin
 
 Syntax highlighting is guessed from the `file name`(see `@injection.filename`).
 
+------
+
 But, You can also specify the language for an item by adding `>!language_name!<`(replace `language_name` with the actual language) before the item text.
+
+>[!NOTE]
+> This is disabled by default! You will need to activate it!
+>
+> You can activate it by creating a file `~/.config/queries/qf/injection.scm` with the following content,
+>
+> ```query
+> ;;extends
+> 
+> (code_block
+>   (language_delimiter) @injection.language
+>   (content) @injection.content
+>   (#offset! @injection.language 0 2 0 -2))
+> 
+> ```
 
 ```txt
  filename.txt | 10 col 5 | >!language_name!< Some text
 ```
 
 You can use `quickfixtextfunc` to add the this to the quickfix item text. You can see an example setup [here](https://github.com/OXY2DEV/nvim/blob/fc1788c3edc588b092769c40537f3ffe81506327/lua/scripts/quickfix.lua#L94-L297).
+
+>[!TIP]
+> Neovim plugin(s) can leverage this to add syntax highlighting & decorations without modifying the quickfix buffer in any way!
+
