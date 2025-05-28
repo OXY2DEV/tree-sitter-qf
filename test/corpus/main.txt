@@ -54,8 +54,12 @@ example.lua       | 2-5 col 0-5 | Some message.
   (quickfix_item
     (filename)
     (range
-      (row)
-      (col))
+      (row
+        (from)
+        (to))
+      (col
+        (from)
+        (to)))
     (code_block
       (content))))
 
