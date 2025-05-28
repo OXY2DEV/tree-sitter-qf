@@ -19,6 +19,25 @@
     }
   },
   {
+    "type": "col",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "from",
+          "named": true
+        },
+        {
+          "type": "to",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "filename",
     "named": true,
     "fields": {}
@@ -86,12 +105,31 @@
     }
   },
   {
-    "type": "\\|",
+    "type": "row",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "from",
+          "named": true
+        },
+        {
+          "type": "to",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
-    "type": "col",
-    "named": true
+    "type": "\\|",
+    "named": false
   },
   {
     "type": "col",
@@ -99,6 +137,10 @@
   },
   {
     "type": "content",
+    "named": true
+  },
+  {
+    "type": "from",
     "named": true
   },
   {
@@ -110,7 +152,7 @@
     "named": true
   },
   {
-    "type": "row",
+    "type": "to",
     "named": true
   },
   {

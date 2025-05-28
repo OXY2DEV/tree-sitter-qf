@@ -5,8 +5,21 @@
     "quickfix_list": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "quickfix_item"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "quickfix_item"
+          },
+          {
+            "type": "PREC",
+            "value": -2,
+            "content": {
+              "type": "PATTERN",
+              "value": "\\n+"
+            }
+          }
+        ]
       }
     },
     "quickfix_item": {
@@ -87,8 +100,8 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[\\d-]+"
+            "type": "SYMBOL",
+            "name": "range_text"
           },
           "named": true,
           "value": "row"
@@ -106,8 +119,8 @@
                 {
                   "type": "ALIAS",
                   "content": {
-                    "type": "PATTERN",
-                    "value": "[\\d-]+"
+                    "type": "SYMBOL",
+                    "name": "range_text"
                   },
                   "named": true,
                   "value": "col"
@@ -128,6 +141,42 @@
             },
             {
               "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "range_text": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\d+"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\d+"
+              },
+              "named": true,
+              "value": "from"
+            },
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\d+"
+              },
+              "named": true,
+              "value": "to"
             }
           ]
         }

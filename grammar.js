@@ -10,10 +10,12 @@
 module.exports = grammar({
   name: "qf",
 
-  extras: $ => [ / /, /\t/ ],
+  extras: _ => [ / /, /\t/ ],
 
   rules: {
-    quickfix_list: $ => repeat($.quickfix_item),
+    quickfix_list: $ => repeat(
+      choice($.quickfix_item, prec(-2, /\n+/))
+    ),
 
     quickfix_item: $ => seq(
       $.filename,
@@ -33,13 +35,21 @@ module.exports = grammar({
       )
     ),
     range: $ => seq(
-      alias(/[\d-]+/, $.row),
+      alias($.range_text, $.row),
       optional(seq("col",
-        alias(/[\d-]+/, $.col))),
+        alias($.range_text, $.col))),
       optional($.item_type)
     ),
 
-    item_type: $ => /\w+/,
+    range_text: $ => choice(
+      /\d+/,
+      seq(
+        alias(/\d+/, $.from), "-",
+        alias(/\d+/, $.to)
+      )
+    ),
+
+    item_type: _ => /\w+/,
 
     code_block: $ => seq(
         optional($.language_delimiter),
