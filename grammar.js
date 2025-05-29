@@ -36,13 +36,17 @@ module.exports = grammar({
     ),
     range: $ => seq(
       alias($.range_text, $.row),
-      optional(seq("col",
-        alias($.range_text, $.col))),
+      optional(
+        seq(
+          "col",
+          alias($.range_text, $.col)
+        )
+      ),
       optional($.item_type)
     ),
 
     range_text: $ => choice(
-      /\d+/,
+      alias(/\d+/, $.value),
       seq(
         alias(/\d+/, $.from), "-",
         alias(/\d+/, $.to)

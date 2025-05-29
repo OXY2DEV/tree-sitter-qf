@@ -54,7 +54,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_BSLASH_PIPE] = "\\|",
   [aux_sym_filename_token1] = "filename_token1",
   [anon_sym_col] = "col",
-  [aux_sym_range_text_token1] = "range_text_token1",
+  [aux_sym_range_text_token1] = "value",
   [anon_sym_DASH] = "-",
   [sym_item_type] = "item_type",
   [aux_sym_code_block_token1] = "content",
@@ -133,8 +133,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_range_text_token1] = {
-    .visible = false,
-    .named = false,
+    .visible = true,
+    .named = true,
   },
   [anon_sym_DASH] = {
     .visible = true,
