@@ -8,8 +8,10 @@ tests/example.lua | 10 col 5 | This function expects 2 arguments, but is receive
   (quickfix_item
     (filename)
     (range
-      (row)
-      (col))
+      (row
+        (value))
+      (col
+        (value)))
     (code_block
       (content))))
 
@@ -23,8 +25,10 @@ example_\|_file.lua | 2 col 5  | This function is unused.
   (quickfix_item
     (filename)
     (range
-      (row)
-      (col))
+      (row
+        (value))
+      (col
+        (value)))
     (code_block
       (content))))
 
@@ -38,8 +42,10 @@ example.lua       | 2 col 5 error | Missing expression '('.
   (quickfix_item
     (filename)
     (range
-      (row)
-      (col)
+      (row
+        (value))
+      (col
+        (value))
       (item_type))
     (code_block
       (content))))
@@ -73,8 +79,10 @@ example.lua       | 5 col 5 | >!lua!< local R = 5;
   (quickfix_item
     (filename)
     (range
-      (row)
-      (col))
+      (row
+        (value))
+      (col
+        (value)))
     (code_block
       (language_delimiter)
       (content))))
@@ -89,7 +97,8 @@ example.lua       |5| >!lua!< local R = 5;
   (quickfix_item
     (filename)
     (range
-      (row))
+      (row
+        (value)))
     (code_block
       (language_delimiter)
       (content))))
